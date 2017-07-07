@@ -1,0 +1,22 @@
+{
+  "name": "movie-search-cli",
+  "version": "1.0.0",
+  "description": "Movie Search Cli",
+  "main": "movie-search-cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helenyau0/Movie-Search-CLI.git"
+  },
+  "author": "Helen Yau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/helenyau0/Movie-Search-CLI/issues"
+  },
+  "homepage": "https://github.com/helenyau0/Movie-Search-CLI#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2"
+  }
+}
