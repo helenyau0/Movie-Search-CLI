@@ -12,13 +12,13 @@ function imdb_Search(movie) {
 
   rp(options)
     .then(function ($) {
-      $('body')
+      let movie = $('body')
       $('.findSection')
       .first()
       .find('.result_text')
       .map((i, elm) => $(elm).text())
       .toArray()
-      console.log('gahasjkhdkashdk', body);
+      return movie.join('\n')
     })
     .catch(function (err) {
         // Crawling failed or Cheerio choked...
@@ -26,6 +26,7 @@ function imdb_Search(movie) {
     });
 }
 
-const movie = process.argv.slice(2).join('+')
-
-imdb_Search(movie)
+function init() {
+  const movie = process.argv.slice(2).join('+')
+  imdb_Search(movie)
+}
