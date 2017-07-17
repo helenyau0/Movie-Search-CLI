@@ -30,6 +30,7 @@ function init() {
 
   imdb_Search(movie, (err, movieNames) => {
     if(err) throw err
+    console.log(movieNames);
     console.log(movieNames.join('\n'));
   })
 }
