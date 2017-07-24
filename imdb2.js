@@ -16,25 +16,28 @@ function imdb_Search(movie) {
   rp(options)
     .then(function ($) {
       $('body')
+      let movies = $('.findSection')
+      .first()
+      .find('.result_text')
+      .find('a')
+      .map((i, elm) => $(elm).text())
+      .toArray()
+      for (let values of movies) {
+        movieObj["movies"].push({"name": values})
+      }
+
+      $('body')
       let imdb_movies = $('.findSection')
       .first()
       .find('.result_text')
       .map((i, elm) => $(elm).text().replace(/[^0-9]/gi, '').substr(0,4))
       .toArray()
-      for (let years of imdb_movies) {
-        $('body').filter(function () {
-          let movies = $('.findSection')
-          .first()
-          .find('.result_text')
-          .find('a')
-          .map((i, elm) => $(elm).text())
-          .toArray()
-          for (let values of movies) {
-            movieObj["movies"].push({"names": values, "years": years})
-          }
-        })
+      let bleh = movieObj['movies']
+      for(let i = 0; i < bleh.length; i++) {
+        for(let n = 0; n < imdb_movies.length; n++) {
+          bleh[i]['year'] = imdb_movies[i]
+        }
       }
-
       console.log(movieObj);
     })
     .catch(function (err) {
