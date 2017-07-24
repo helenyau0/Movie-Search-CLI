@@ -19,7 +19,7 @@ function imdb_Search(movie) {
       let movies = $('.findSection')
       .first()
       .find('.result_text')
-      .find('a')
+      .children('a')
       .map((i, elm) => $(elm).text())
       .toArray()
       for (let values of movies) {
