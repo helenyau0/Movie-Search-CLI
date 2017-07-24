@@ -3,8 +3,6 @@ const app = express()
 const cheerio = require('cheerio');
 const rp = require('request-promise');
 
-const query = process.argv.slice(2).join('+')
-
 const port = process.env.PORT || 3000;
 
 app.get('/api/imdb/search/:query', function(req, res) {
@@ -40,10 +38,10 @@ app.get('/api/imdb/search/:query', function(req, res) {
       .find('.result_text')
       .map((i, elm) => $(elm).text().replace(/[^0-9]/gi, '').substr(0,4))
       .toArray()
-      let bleh = movieObj['movies']
-      for(let i = 0; i < bleh.length; i++) {
+      let movieArray = movieObj['movies']
+      for(let i = 0; i < movieArray.length; i++) {
         for(let n = 0; n < imdb_movies.length; n++) {
-          bleh[i]['year'] = imdb_movies[i]
+          movieArray[i]['year'] = imdb_movies[i]
         }
       }
       return movieObj
