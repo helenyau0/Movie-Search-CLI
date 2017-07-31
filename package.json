@@ -2,8 +2,9 @@
   "name": "movie-search-cli",
   "version": "1.0.0",
   "description": "Movie Search Cli",
-  "main": "movie-search-cli.js",
+  "main": "imdb2.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +18,10 @@
   },
   "homepage": "https://github.com/helenyau0/Movie-Search-CLI#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "cheerio": "^1.0.0-rc.2",
+    "express": "^4.15.3",
+    "nodemon": "^1.11.0",
     "request": "^2.81.0",
     "request-promise": "^4.2.1"
   }

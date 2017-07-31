@@ -1,9 +1,15 @@
+const express = require('express')
+const app = express()
 const cheerio = require('cheerio');
 const rp = require('request-promise');
 
-function imdb_Search(movie) {
+const port = process.env.PORT || 3000;
+
+app.get('/api/imdb/search/:query', function(req, res) {
+  const {query} = req.params
+
   let options = {
-    uri: `http://www.imdb.com/find?ref_=nv_sr_fn&q=${movie}&s=all`,
+    uri: `http://www.imdb.com/find?ref_=nv_sr_fn&q=${query}&s=all`,
     transform: function(body) {
       return cheerio.load(body)
     }
@@ -38,14 +44,14 @@ function imdb_Search(movie) {
           movieArray[i]['year'] = imdb_movies[i]
         }
       }
-      console.log(movieObj);
+      return movieObj
     })
-    .catch(function (err) {
-        // Crawling failed or Cheerio choked...
-        console.log(err);
-    });
-}
+    .then(movieObj => res.json(movieObj))
+    .catch(err => console.log(err))
+})
 
-const movie = process.argv.slice(2).join('+')
+module.exports = app;
 
-imdb_Search(movie)
+
+app.listen(port)
+console.log('listening on port: 3000');
